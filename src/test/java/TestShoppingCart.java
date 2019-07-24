@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author Jonas P&ouml;hler
  * @since testingdemo 1.0
@@ -45,5 +47,7 @@ public class TestShoppingCart {
         shoppingCart.removeProduct(beer, 1);
         Assertions.assertEquals(2.0, shoppingCart.calculateNetPrice());
         Assertions.assertEquals(2.32, shoppingCart.calculateGrossPrice());
+        // alternative
+        assertThat(shoppingCart.calculateGrossPrice()).isEqualTo(2.32);
     }
 }
