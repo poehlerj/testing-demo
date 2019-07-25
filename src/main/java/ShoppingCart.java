@@ -18,7 +18,7 @@ public class ShoppingCart {
 
     public Double calculateGrossPrice() {
         return products.entrySet().stream()
-                .map(it -> it.getKey().getNetValue() * it.getValue())
+                .map(it -> it.getKey().getGrossValue() * it.getValue())
                 .reduce(Double::sum)
                 .orElse(0d);
     }
@@ -28,6 +28,6 @@ public class ShoppingCart {
     }
 
     public void removeProduct(final Product product, final Integer amount) {
-        products.compute(product, (k, v) -> (v == null) ? -amount : v + amount);
+        products.compute(product, (k, v) -> (v == null) ? -amount : v - amount);
     }
 }
